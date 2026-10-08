@@ -3,6 +3,7 @@ package br.com.fiap.controller;
 import br.com.fiap.model.dto.RemedioDTO;
 import br.com.fiap.model.entity.Remedio;
 import br.com.fiap.model.repository.RemedioRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class RemedioController {
     private RemedioRepository remedioRepository;
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody RemedioDTO remedioDTO){
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid RemedioDTO remedioDTO){
         try {
             Remedio remedio = new Remedio(remedioDTO);
             remedioRepository.save(remedio);
