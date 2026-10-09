@@ -54,5 +54,18 @@ public class RemedioController {
         }
     }
 
+    @PutMapping("/{codigo}")
+    public ResponseEntity<String> altualizar(@PathVariable Long codigo, @RequestBody @Valid RemedioDTO remedioDTO){
+        try {
+            Remedio remedio = new Remedio(remedioDTO);
+            remedio.setCodigo(codigo);
+            remedioRepository.save(remedio); //save é o metodo para atualizar.
+            return ResponseEntity.ok("Remédio atualizado com sucesso!");
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao atualizar o remédio");
+        }
+    }
+
 
 }
