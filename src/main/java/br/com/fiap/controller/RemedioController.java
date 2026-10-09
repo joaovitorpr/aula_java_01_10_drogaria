@@ -44,4 +44,15 @@ public class RemedioController {
         }
     }
 
+    @DeleteMapping("/{codigo}")
+    public ResponseEntity<String> excluir(@PathVariable Long codigo){
+        if(remedioRepository.existsById(codigo)) {
+            remedioRepository.deleteById(codigo);
+            return ResponseEntity.ok("Remédio deletado com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Remédio não encontrado!");
+        }
+    }
+
+
 }
