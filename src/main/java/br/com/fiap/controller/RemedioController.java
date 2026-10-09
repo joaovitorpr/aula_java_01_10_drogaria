@@ -55,7 +55,7 @@ public class RemedioController {
     }
 
     @PutMapping("/{codigo}")
-    public ResponseEntity<String> altualizar(@PathVariable Long codigo, @RequestBody @Valid RemedioDTO remedioDTO){
+    public ResponseEntity<String> atualizar(@PathVariable Long codigo, @RequestBody @Valid RemedioDTO remedioDTO){
         try {
             Remedio remedio = new Remedio(remedioDTO);
             remedio.setCodigo(codigo);
